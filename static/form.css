@@ -1,0 +1,68 @@
+body {
+    background-color: white;
+  }
+  
+.form{
+  padding:5% 0 5% 0;
+}
+
+  .form form {
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+  }
+  
+  .form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: black;
+  }
+  
+  .form input[type="text"], input[type="number"],
+  select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid gray;
+    color: black;
+  }
+  
+  .form input[type="submit"] {
+    background-color: gray;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    width: 120px;
+    text-align: center;
+  }
+  
+  .form select {
+    width: 30%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-right: 6px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid gray;
+    color: black;
+    background-color: white;
+  }
+  
+  header {
+    background-color: gray;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

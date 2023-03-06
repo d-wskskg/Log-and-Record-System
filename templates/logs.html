@@ -1,0 +1,367 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Case Number</th>
+            <th>Admission Date</th>
+            <th>Discharge Date</th>
+            <th>Name of Borrower</th>
+            <th>Borrowed Date</th>
+            <th>Returned Date</th>
+            <th><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myFormModal">
+                Add
+              </button></th>
+        </tr>
+    </thead>
+
+
+    
+
+
+    <div class="modal fade" id="myFormModal" tabindex="-1" aria-labelledby="myFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="myFormModalLabel">Add Chart</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{request.path}}" method="post">
+                <div class="mb-3">
+                  <label for="first-name" class="form-label">First Name</label>
+                  <input type="text" class="form-control" name="first_name" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="middle-initial" class="form-label">Middle Initial</label>
+                  <input type="text" class="form-control" name="middle_initial">
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="last-name" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" name="surname" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="" class="form-control" name="age" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="case-number" class="form-label">Case Number</label>
+                  <input type="number" name="case_number" minlength="6" maxlength="10" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="admission-date" class="form-label">Admission Date</label>
+                  <input type="number" class="form-control" id="admission_day" name="admission_day" min="1" max="31" placeholder="Day" required>
+                </select>
+                <div class= "mb-3">
+                  <label for="admission_month" class="form-label">Admission Month:</label>
+                  <select class="form-select" id="admission_month" name="admission_month" required>
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" id="admission_year" name="admission_year" min="1900" max="2099" placeholder="Year" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="admission-date" class="form-label">Discharge Date</label>
+                  <input type="number" class="form-control" id="discharge_day" name="discharge_day" min="1" max="31" placeholder="Day" required>
+                </select>
+                <div class= "mb-3">
+                  <label for="discharge_month" class="form-label">Discharge Month:</label>
+                  <select class="form-select" id="discharge_month" name="discharge_month" required>
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" id="discharge_year" name="discharge_year" min="1900" max="2099" placeholder="Year" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="borrower-name" class="form-label">Name of Borrower</label>
+                  <input type="text" class="form-control" name="borrower" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="borrowed-date" class="form-label">Borrowed Date</label>
+                  <input type="number" class="form-control" id="borrowed_day" name="borrowed_day" min="1" max="31" placeholder="Day" required>
+                </select>
+                <div class= "mb-3">
+                  <label for="borrowed_month" class="form-label">Returned Month:</label>
+                  <select class="form-select" id="borrowed_month" name="borrowed_month" required>
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" id="borrowed_year" name="borrowed_year" min="1900" max="2099" placeholder="Year" required>
+                </div>  
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Save" name="add">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  </div>
+              </form>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    <tbody>
+        {% for a in mr %}
+            <tr>
+                <td><p class="h6">{{a.first_name}}</p></td>
+                <td><p class="h6">{{a.middle_initial}}</p></td>
+                <td><p class="h6">{{a.surname}}</p></td>
+                <td><p class="h6">{{a.age}}</p></td>
+                <td><p class="h6">{{a.case_number}}</p></td>
+                <td><p class="h6">{{a.admission_date}}</p></td>
+                <td><p class="h6">{{a.discharge_date}}</p></td>
+                <td><p class="h6">{{a.borrower}}</p></td>
+                <td><p class="h6">{{a.borrowed_date}}</p></td>
+                <td><p class="h6">{{a.returned_date}}</p></td>
+
+                <td>
+
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#returnDateModal_{{a.id}}">
+                  Return
+
+                </button>
+              </td>
+
+                <td>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal_{{a.id}}">
+                    Edit
+  
+                  </button>
+            </td>
+                <td>
+                  <a href="/delete/{{a.id}}"><button type="button" class="btn btn-danger" name="Decline">Delete</button></a>
+            </td>
+            </tr>
+
+                   <div class="modal fade" id="returnDateModal_{{a.id}}" tabindex="-1" aria-labelledby="returnDateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="returnDateModalLabel">Return Date</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/return/{{a.id}}" method="post">
+          <h1>{{returnID}}</h1>
+          <div class="mb-3">
+            <label for="returned_day" class="form-label">Returned Day:</label>
+            <input type="number" class="form-control" id="returned_day" name="returned_day" min="1" max="31" required>
+          </div>
+          <div class= "mb-3">
+            <label for="returned_month" class="form-label">Returned Month:</label>
+            <select class="form-select" id="returned_month" name="returned_month" required>
+              <option value="" disabled selected>Select Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="returned_year" class="form-label">Returned Year:</label>
+            <input type="number" class="form-control" id="returned_year" name="returned_year" min="1900" max="2099" required>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Return">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit modal -->
+<div class="modal fade" id="editModal_{{a.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit Medical Record</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="/edit/{{a.id}}" method="post">
+                <div class="mb-3">
+                  <label for="first-name" class="form-label">First Name</label>
+                  <input type="text" class="form-control" name="first_name">
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="middle-initial" class="form-label">Middle Initial</label>
+                  <input type="text" class="form-control" name="middle_initial">
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="last-name" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" name="surname" >
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="" class="form-control" name="age" >
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="case-number" class="form-label">Case Number</label>
+                  <input type="number" name="case_number" minlength="6" maxlength="10" >
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="admission-date" class="form-label">Admission Date</label>
+                  <input type="number" class="form-control" id="admission_day" name="admission_day" min="1" max="31" placeholder="Day" >
+                </select>
+                <div class= "mb-3">
+                  <label for="admission_month" class="form-label">Admission Month:</label>
+                  <select class="form-select" id="admission_month" name="admission_month" >
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" id="admission_year" name="admission_year" min="1900" max="2099" placeholder="Year" >
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="admission-date" class="form-label">Discharge Date</label>
+                  <input type="number" class="form-control" id="discharge_day" name="discharge_day" min="1" max="31" placeholder="Day" >
+                </select>
+                <div class= "mb-3">
+                  <label for="discharge_month" class="form-label">Discharge Month:</label>
+                  <select class="form-select" id="discharge_month" name="discharge_month" >
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" id="discharge_year" name="discharge_year" min="1900" max="2099" placeholder="Year" >
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="borrower-name" class="form-label">Name of Borrower</label>
+                  <input type="text" class="form-control" name="borrower" >
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="borrowed-date" class="form-label">Borrowed Date</label>
+                  <input type="number" class="form-control" id="borrowed_day" name="borrowed_day" min="1" max="31" placeholder="Day" >
+                </select>
+                <div class= "mb-3">
+                  <label for="borrowed_month" class="form-label">Returned Month:</label>
+                  <select class="form-select" id="borrowed_month" name="borrowed_month" >
+                    <option value="" disabled selected>Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <input type="number" class="form-control" id="borrowed_year" name="borrowed_year" min="1900" max="2099" placeholder="Year" >
+                </div>  
+
+          <div class="modal-footer">
+              <input type="submit" class="btn btn-success" value="Save" name="edit">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            
+          </div>
+        </form> 
+      </div>
+  </div>
+</div>
+        {% endfor %}
+
+ 
+    </tbody>
+</table>
+
+
+
+{% endblock %}
